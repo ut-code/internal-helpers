@@ -1,0 +1,20 @@
+name: Disallow-Large-Dir
+on:
+  - push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+      - run: go build .
+        working-directory: disallow-large-dir
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+      - run: go test ./...
+        working-directory: disallow-large-dir
