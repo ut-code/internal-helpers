@@ -12,5 +12,6 @@
 - is used to keep our website minimal
 
 ```bash
-nix run github:ut-code/internal-helpers#disallow-large-dir
+# usage
+nix run github:ut-code/internal-helpers#disallow-large-dir ./path ./to ./multiple ./dirs
 ```
