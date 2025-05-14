@@ -1,0 +1,6 @@
+# binary files
+disallow-large-dir/disallow-large-dir
+
+# Nix, dev env
+.direnv
+result
