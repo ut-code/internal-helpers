@@ -1,4 +1,4 @@
-module github.com/ut-code/internal-helper/disallow-large-dir
+module github.com/ut-code/internal-helpers/disallow-large-dir
 
 go 1.24.2
 

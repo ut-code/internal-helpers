@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/ut-code/internal-helpers/disallow-large-dir/fsutils"
 	"log"
 	"os"
 	"strings"
-	"github.com/ut-code/internal-helper/disallow-large-dir/fsutils"
 )
 
 func main() {

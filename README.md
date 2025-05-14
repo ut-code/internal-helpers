@@ -1,5 +1,9 @@
 # Internal Helpers
 
+## Development
+
+パッケージは自由に作って OK です。言語の縛りもありません。
+
 ## Packages
 
 ### disallow-large-dir

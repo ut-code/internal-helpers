@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"github.com/ut-code/internal-helper/disallow-large-dir/fsutils"
+	"github.com/ut-code/internal-helpers/disallow-large-dir/fsutils"
 )
 
 type Flags struct {
