@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"github.com/ut-code/internal-helper/disallow-large-dir/fsutils"
 )
 
 func main() {
@@ -23,9 +24,10 @@ func main() {
 			fatalMessages = append(fatalMessages, err.Error())
 		}
 		if size > flags.MaxSize {
-			fatalMessages = append(fatalMessages, fmt.Sprintf("directory %v is too large (%v > %v)", dir, size, flags.MaxSize))
+			fatalMessages = append(fatalMessages, fmt.Sprintf("[ERROR] directory %v is too large (%v > %v)", dir, fsutils.FormatSize(size), fsutils.FormatSize(flags.MaxSize)))
+		} else {
+			fmt.Printf("[OK] %v %v\n", fsutils.FormatSize(size), dir)
 		}
-		fmt.Printf("%v %v\n", size, dir)
 	}
 	if len(fatalMessages) > 0 {
 		log.Fatal("\n" + strings.Join(fatalMessages, "\n"))
