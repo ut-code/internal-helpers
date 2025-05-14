@@ -11,8 +11,6 @@
   }: let
     inherit (nixpkgs) lib;
     systems = ["x86_64-linux" "x86_64-darwin" "64-linux" "aarch64-darwin"];
-    # fn :: system -> value
-    # :: { system = value; }
     eachSystem = fn:
       lib.listToAttrs (
         lib.map (system: {
