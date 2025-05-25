@@ -3,7 +3,6 @@ package app
 import (
 	"log"
 	"os"
-	"path"
 	"strconv"
 )
 
@@ -14,7 +13,7 @@ func WriteMember(ac AppContext, dest string, member Member) {
 	}
 	defer f.Close()
 
-	finalPathToPicture := path.Join(path.Dir(dest), NameToFileName(member.Metadata.NameEn)+".avif")
+	runtimePathToPicture := "./" + NameToFileName(member.Metadata.NameEn) + ".avif"
 
 	// write frontmatter
 	writeln(f, "---")
@@ -22,7 +21,8 @@ func WriteMember(ac AppContext, dest string, member Member) {
 	writeField(f, "nameEn", member.Metadata.NameEn)
 	writeField(f, "joinYear", strconv.Itoa(member.Metadata.JoinYear))
 	writeField(f, "description", member.Metadata.Description)
-	writeField(f, "picture", finalPathToPicture)
+	writeField(f, "faceImage", runtimePathToPicture)
+	writeField(f, "upperBodyImage", runtimePathToPicture)
 	writeField(f, "github", member.Metadata.GitHub)
 	writeField(f, "twitter", member.Metadata.Twitter)
 	writeField(f, "website", member.Metadata.Website)

@@ -105,6 +105,10 @@ func parseRow(ac AppContext, row []string, headers []string) Member {
 		}
 	}
 
+	if err := MemberPreprocess(&member); err != nil {
+		log.Fatalln("[parser] failed to preprocess member:", err)
+	}
+
 	return member
 }
 
