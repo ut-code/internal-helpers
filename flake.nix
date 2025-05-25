@@ -25,6 +25,7 @@
     in {
       hello = pkgs.hello;
       disallow-large-dir = pkgs.callPackage ./disallow-large-dir {};
+      create-members-page = pkgs.callPackage ./create-members-page {};
     });
     devShells = eachSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
