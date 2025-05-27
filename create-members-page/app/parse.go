@@ -46,7 +46,7 @@ func ParseFile(ac AppContext, path string) ([]Member, error) {
 
 func getRow(f *excelize.File, sheet string, row int) ([]string, error) {
 	var cells []string
-	var col int = 1
+	var col = 1
 
 	for cell := "-"; cell != ""; col++ {
 		// convert column number to letter: 1 -> "A", 2 -> "B", etc.

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/ut-code/internal-helpers/disallow-large-dir/fsutils"
+	"github.com/ut-code/internal-helpers/lib/fsutils"
 	"log"
 	"os"
 	"strings"

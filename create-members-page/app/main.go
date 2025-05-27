@@ -3,6 +3,8 @@ package app
 import (
 	"context"
 	"fmt"
+	fs "github.com/ut-code/internal-helpers/lib/fsutils"
+	"github.com/ut-code/internal-helpers/lib/magick"
 	"log"
 	"path"
 	"strings"
@@ -36,7 +38,7 @@ func Main(ctx context.Context, c *cli.Command) error {
 		ac.OutDirectory += "/"
 	}
 
-	if err := mkDirIfNotExists(ac.OutDirectory); err != nil {
+	if err := fs.MkdirIfNotExists(ac.OutDirectory); err != nil {
 		return fmt.Errorf("failed to create output directory: %w", err)
 	}
 
@@ -53,7 +55,7 @@ func Main(ctx context.Context, c *cli.Command) error {
 		var picdst string
 		safeName := NameToFileName(member.Metadata.NameEn)
 		memberDir := ac.OutDirectory + safeName + "/"
-		err = mkDir(memberDir)
+		err = fs.Mkdir(memberDir)
 		if err != nil {
 			err = fmt.Errorf("failed to create member directory: %w", err)
 			goto end
@@ -61,12 +63,12 @@ func Main(ctx context.Context, c *cli.Command) error {
 		WriteMember(ac, memberDir+"index.md", member)
 		ext = path.Ext(member.Metadata.PicturePath)
 		picdst = memberDir + safeName + ext
-		err = cp(member.Metadata.PicturePath, picdst)
+		err = fs.Cp(member.Metadata.PicturePath, picdst)
 		if err != nil {
 			err = fmt.Errorf("failed to copy picture: %w", err)
 			goto end
 		}
-		if err = mogrify(picdst); err != nil {
+		if err = magick.Mogrify(picdst, "avif"); err != nil {
 			err = fmt.Errorf("failed to mogrify picture: %w", err)
 			goto end
 		}

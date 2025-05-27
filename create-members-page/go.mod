@@ -2,9 +2,12 @@ module github.com/ut-code/internal-helpers/create-members-page
 
 go 1.24.2
 
+replace github.com/ut-code/internal-helpers/lib => ../lib
+
 require (
 	github.com/go-playground/validator/v10 v10.26.0
 	github.com/urfave/cli/v3 v3.3.3
+	github.com/ut-code/internal-helpers/lib v0.0.0-00010101000000-000000000000
 	github.com/xuri/excelize/v2 v2.9.1
 )
 
